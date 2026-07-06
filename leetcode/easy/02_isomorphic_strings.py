@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/isomorphic-strings/description/
+
 
 def is_isomorphic(s: str, t: str) -> bool:
     m: dict[str, str] = {}
