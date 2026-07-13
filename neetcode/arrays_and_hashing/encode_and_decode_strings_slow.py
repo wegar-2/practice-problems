@@ -50,3 +50,9 @@ if __name__ == "__main__":
 
     s_dec = s.decode(s_enc)
     print(f"{s_dec=}")
+
+    from collections import deque
+
+    dq = deque()
+    dq.append()
+    dq.popleft()
