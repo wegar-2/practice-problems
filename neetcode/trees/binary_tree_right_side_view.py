@@ -16,18 +16,18 @@ class Solution:
 
     def _level_order_traverse(self, root: TreeNode) -> List[int]:
 
-        out: defaultdict = defaultdict(list)
+        out: defaultdict = defaultdict(int)
         queue: deque[tuple[TreeNode, int]] = deque([(root, 0)])
 
         while queue:
             node, level = queue.popleft()
-            out[level].append(node.val)
+            out[level] = node.val
             if node.left:
                 queue.append((node.left, level + 1))
             if node.right:
                 queue.append((node.right, level + 1))
 
-        return [v[-1] for v in out.values()]
+        return [v for v in out.values()]
 
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if root is None:
