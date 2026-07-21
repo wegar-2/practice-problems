@@ -17,7 +17,7 @@ def _make_subsets(
     all_subsets = _make_subsets(nums, all_subsets, subset, pointer + 1)
     subset.pop()
 
-    return [x for x in all_subsets]
+    return all_subsets
 
 
 def make_subsets(nums: List[int]) -> List[List[int]]:
