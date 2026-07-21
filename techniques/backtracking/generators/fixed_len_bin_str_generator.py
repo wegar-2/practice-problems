@@ -1,6 +1,5 @@
 
 def fixed_len_bin_str_generator(n: int = 2):
-
     def make_str(s: str):
         if len(s) == n:
             yield s
