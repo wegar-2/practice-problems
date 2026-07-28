@@ -11,8 +11,8 @@ class Vertex:
         if id_:
             self._id = id_
         else:
-            self._id = self._COUNTER
-            self._COUNTER += 1
+            self._id = Vertex._COUNTER
+            Vertex._COUNTER += 1
 
     @property
     def id(self) -> int:
@@ -20,6 +20,9 @@ class Vertex:
 
     def __str__(self) -> str:
         return f"Vertex(id_={self._id})"
+
+    def __repr__(self) -> str:
+        return self.__str__()
 
 
 if __name__ == "__main__":

@@ -29,3 +29,8 @@ def make_default_graph() -> Ungraph:
     graph = Ungraph(vertices, edges)
 
     return graph
+
+
+if __name__ == "__main__":
+    graph = make_default_graph()
+    graph.print()

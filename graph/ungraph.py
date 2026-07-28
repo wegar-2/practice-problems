@@ -1,9 +1,5 @@
-import logging
-
 from graph.vertex import Vertex
 from graph.aliases import Edge
-
-logger = logging.getLogger(__name__)
 
 __all__ = ["Ungraph"]
 
@@ -19,8 +15,10 @@ class Ungraph:
             vertices: list[Vertex],
             edges: list[Edge]
     ):
-        self._vertices: list[Vertex] = vertices
+        self._vertices: list[Vertex] = []
         self._adj_map: dict[Vertex, list[Vertex]] = {}
+        for v in vertices:
+            self.add_vertex(v)
         for e in edges:
             self.add_edge(e)
 
@@ -44,7 +42,7 @@ class Ungraph:
 
     def print_adj_map(self) -> None:
         for v, lov in self._adj_map.items():
-            logger.info(f"{v} ====> {self._adj_map[v]}")
+            print(f"{v} ====> {self._adj_map[v]}")
 
     def add_edge(self, e: Edge):
         self._validate_edge(e)
@@ -84,6 +82,6 @@ class Ungraph:
                 self._adj_map[v].pop(pos)
 
     def print(self) -> None:
-        logger.info(f"VERTICES: {self._vertices}")
-        logger.info("EDGES: ")
+        print(f"VERTICES: {self._vertices}")
+        print("EDGES: ")
         self.print_adj_map()
