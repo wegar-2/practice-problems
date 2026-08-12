@@ -35,20 +35,16 @@ def binary_search_gte(
     mid = (left + right) // 2
 
     if nums[mid] >= target:
-        left_first = binary_search_gte(nums, target, left, mid - 1)
-        if left_first == -1:
-            return mid
-        else:
-            return left_first
+        return binary_search_gte(nums, target, left, mid)
     else:
         return binary_search_gte(nums, target, mid + 1, right)
 
 
 if __name__ == "__main__":
 
-    nums = [12]
     # nums = [12]
-    # nums = [1, 2, 5, 9, 13, 15, 19, 23, 123, 323, 909, 100001]
+    # nums = [12]
+    nums = [1, 2, 5, 9, 13, 15, 19, 23, 123, 323, 909, 100001]
     target = 20
 
-    print(f"{binary_search_gte(nums, target, 0)=}")
+    print(f"{binary_search_gte(nums, target)=}")
