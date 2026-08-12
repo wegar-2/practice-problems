@@ -1,6 +1,12 @@
 import random
 
-__all__ = ["make_random_nums"]
+from utils.aliases import Alphabet
+from utils.constants import ALPHABETS
+
+__all__ = [
+    "make_random_nums",
+    "make_random_string"
+]
 
 
 def make_random_nums(
@@ -9,3 +15,10 @@ def make_random_nums(
         b: int = 101
 ) -> list[int]:
     return [random.randint(a, b) for _ in range(n)]
+
+
+def make_random_string(
+        n: int = 50,
+        alphabet: Alphabet = "ascii_letters"
+) -> str:
+    return "".join(random.choices(population=ALPHABETS[alphabet], k=n))
