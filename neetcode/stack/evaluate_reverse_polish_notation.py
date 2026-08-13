@@ -5,7 +5,7 @@ import math
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
 
-        stck: list[str] = []
+        stck: list[str | int] = []
 
         for token in tokens:
             if token in ["+", "-", "*", "/"]:
