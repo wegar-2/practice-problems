@@ -1,12 +1,5 @@
 
 
-def find_occ_positions1(nums: list[int], value: int) -> list[int]:
-    out: list[int] = []
-    j: int = -1
-    while (next_ := nums[j+1:].index(value)) != -1 and (j+1) <= len(nums) - 1:
-        out.append(j + next_)
-    return out
-
 
 def find_occ_positions2(nums: list[int]) -> list[int]:
     pass
@@ -28,7 +21,8 @@ if __name__ == "__main__":
     # popping value from specific position: .pop() with argument
     popped2 = lst.pop(1)
 
-    # finding first occurrence of a value (returns -1 if not found)
+    # finding first occurrence of a value
+    # raises ValueError if the target value is not found
     pos_of_4 = lst.index(4)
 
     # removing specific value from the list: .remove()
@@ -44,5 +38,7 @@ if __name__ == "__main__":
 
     # find index of first occurrence of a value in the list
     lst.index(90)
+    lst.index(1234)
 
-    # merging two lists using .extend() vs using overloaded + (i.e. dunder add)
+    # values: list[int] = [1, 10, 1, 56, 434, 1, 23, 3]
+    # print(f"{find_occ_positions1(values, 1)=}")
