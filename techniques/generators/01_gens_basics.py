@@ -13,10 +13,6 @@ def nested_generator(n: int, m: int, seed: int = 123_456):
         yield from integer_generator(n, seed)
 
 
-def make_bin_str(s: str = ""):
-
-
-
 if __name__ == "__main__":
     # for i, x in enumerate(integer_generator(10), start=1):
     #     print(f"{i}: {x}")
