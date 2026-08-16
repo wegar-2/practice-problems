@@ -28,7 +28,7 @@ def reverse_sll(head: Node) -> Node:
     prev.next = None
     while nxt:
         nxt.next = prev
-        prev, nxt = nxt, nxt.next
+        prev, nxt = nxt, nxt.next 
     return nxt # noqa
 
 
