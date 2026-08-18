@@ -14,6 +14,13 @@ __all__ = [
 ]
 
 
+def print_sll(head: Node) -> None:
+    i = 0
+    while head.next:
+        print(f"node {i}: {head.val}")
+        i += 1
+
+
 def sll_end(node: Node) -> Node:
     """ Time complexity: O(n) """
     while node.next: # noqa
@@ -27,9 +34,10 @@ def reverse_sll(head: Node) -> Node:
     nxt: Node | None = prev.next
     prev.next = None
     while nxt:
+        temp = nxt.next
         nxt.next = prev
-        prev, nxt = nxt, nxt.next 
-    return nxt # noqa
+        prev, nxt = nxt, temp
+    return prev
 
 
 def sll_len(head: Node) -> int:
