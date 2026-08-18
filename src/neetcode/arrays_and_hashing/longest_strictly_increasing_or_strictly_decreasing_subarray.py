@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+
     def longestMonotonicSubarray(self, nums: List[int]) -> int:
         inc_len = 1
         dec_len = 1
