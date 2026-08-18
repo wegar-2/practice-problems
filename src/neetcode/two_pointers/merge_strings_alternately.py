@@ -17,7 +17,6 @@ class Solution:
                 if j <= len(word2) - 1:
                     word.append(word2[j])
                     j += 1
-                    word1_turn
                 if i <= len(word1) - 1:
                     word1_turn = True
 
