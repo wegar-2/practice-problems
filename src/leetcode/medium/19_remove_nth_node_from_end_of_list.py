@@ -22,9 +22,6 @@ class Solution:
             node = node.next
             l += 1
 
-        if l == 1:
-            return None
-
         pos = l - n + 1  # 1-indexed position in the list from start
         node = head
 
