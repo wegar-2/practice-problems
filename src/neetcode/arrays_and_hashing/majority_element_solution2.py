@@ -5,6 +5,7 @@ from collections import defaultdict
 class Solution:
     """
     Brute-force suboptimal solution.
+    Worst case space complexity: O(n)
     """
     def majorityElement(self, nums: List[int]) -> int:
         counts: defaultdict[int, int] = defaultdict(int)
