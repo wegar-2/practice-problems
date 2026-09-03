@@ -11,6 +11,4 @@ class Solution:
     def majorityElement(self, nums: List[int]) -> int:
         counts: Counter = Counter(nums)
         max_count: int = max(counts.values())
-        return [
-            k for k, v in counts.items() if v == max_count
-        ][0]
+        return [k for k, v in counts.items() if v == max_count][0]
