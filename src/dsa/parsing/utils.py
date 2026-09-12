@@ -7,6 +7,19 @@ def conjunction(l: str, r: str) -> str:
     return f"({l}&{r})"
 
 
+def binary_arithmetic_eval(l: int, r: int, operator: str) -> int:
+    match operator:
+        case "+":
+            return l + r
+        case "-":
+            return l - r
+        case "//":
+            return l // r
+        case "*":
+            return l * r
+    raise ValueError(f"Unhandled operator {operator=}")
+
+
 def make_atomic_formulae(n: int = 10) -> set[str]:
     """
     Creates atomic formulae using the following schedule:
@@ -44,7 +57,7 @@ def make_random_formula(
     random.seed(seed)
 
     def get_atomic_formula() -> str:
-        return random.choices(list(atomic_formulae), k=1)
+        return random.choices(list(atomic_formulae), k=1)[0]
 
     out: str = ""
     for i in range(num_connectives):
@@ -57,3 +70,8 @@ def make_random_formula(
             out = f"({l}&{r})"
 
     return out
+
+
+if __name__ == "__main__":
+    res = make_random_formula(atomic_formulae={"A", "B", "C"}, num_connectives=3)
+    print("halt")

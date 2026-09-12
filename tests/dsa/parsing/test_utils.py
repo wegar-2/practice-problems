@@ -16,6 +16,7 @@ def test_make_atomic_formulae_all_ascii_uppercase():
     assert (make_atomic_formulae(len(ascii_uppercase)) ==
             {l for l in ascii_uppercase})
 
+
 def test_make_atomic_formulae_all_ascii_uppercase_plus_one():
     s = {l for l in ascii_uppercase}
     s.update({"A_0"})
