@@ -17,5 +17,5 @@ class CompoundFrml:
 
     def __post_init__(self):
         if self.operator not in BINARY_LOGICAL_OPERATORS:
-            raise ValueError(f"Invalid logical operator encountered: "
-                             f"{self.operator}")
+            raise ValueError(
+                f"Invalid logical operator encountered: {self.operator}")

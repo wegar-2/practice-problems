@@ -2,6 +2,8 @@ from itertools import product
 import random
 from string import ascii_uppercase
 
+# from src.dsa.parsing.constants import BINARY_LOGICAL_OPERATORS
+
 
 def conjunction(l: str, r: str) -> str:
     return f"({l}&{r})"
@@ -70,6 +72,24 @@ def make_random_formula(
             out = f"({l}&{r})"
 
     return out
+
+
+# def retrieve_atomic_formula(expr: str) -> str:
+#     if expr[0] not in ascii_uppercase:
+#         raise ValueError(f"Invalid string passed!")
+#
+#     if len(expr) == 1:
+#         return expr
+#
+#     if expr[1] not in BINARY_LOGICAL_OPERATORS and expr[1] != ")":
+#         return expr[1]
+#     else:
+#         if expr[1] != "_":
+#             raise ValueError
+#
+#     if len(expr) == 2:
+#         raise ValueError
+
 
 
 if __name__ == "__main__":
