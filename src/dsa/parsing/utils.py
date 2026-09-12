@@ -1,12 +1,10 @@
 from itertools import product
 import random
 from string import ascii_uppercase
+from typing import Optional
 
-# from src.dsa.parsing.constants import BINARY_LOGICAL_OPERATORS
-
-
-def conjunction(l: str, r: str) -> str:
-    return f"({l}&{r})"
+from src.dsa.parsing.constants import BINARY_LOGICAL_OPERATORS
+from src.dsa.parsing.exceptions import InvalidAtomicFormula
 
 
 def arithmetic_eval(l: int, r: int, operator: str) -> int:
@@ -74,24 +72,38 @@ def make_random_formula(
     return out
 
 
-# def retrieve_atomic_formula(expr: str) -> str:
-#     if expr[0] not in ascii_uppercase:
-#         raise ValueError(f"Invalid string passed!")
-#
-#     if len(expr) == 1:
-#         return expr
-#
-#     if expr[1] not in BINARY_LOGICAL_OPERATORS and expr[1] != ")":
-#         return expr[1]
-#     else:
-#         if expr[1] != "_":
-#             raise ValueError
-#
-#     if len(expr) == 2:
-#         raise ValueError
+def validate_atomic_formula_index(digits: str) -> None:
+    if digits[0] == "0":
+        raise InvalidAtomicFormula(digits)
 
 
+def retrieve_atomic_formula(
+        expr: str,
+        atomic_formulae: Optional[set[str]] = None
+) -> str:
+    if expr[0] not in ascii_uppercase:
+        raise ValueError(f"Invalid string passed!")
 
-if __name__ == "__main__":
-    res = make_random_formula(atomic_formulae={"A", "B", "C"}, num_connectives=3)
-    print("halt")
+    if len(expr) == 1:
+        return expr
+
+    if expr[1] in BINARY_LOGICAL_OPERATORS or expr[1] == ")":
+        return expr[0]
+    else:
+        if expr[1] != "_":
+            raise InvalidAtomicFormula(expr)
+
+    if len(expr) == 2:
+        raise InvalidAtomicFormula(expr)
+
+    idx: int = 2
+    while expr[idx].isnumeric() and idx < len(expr):
+        idx += 1
+    validate_atomic_formula_index(expr[2:idx])
+
+    if atomic_formulae is None:
+        return expr[:idx]
+    elif (out := expr[:idx]) not in atomic_formulae:
+        raise InvalidAtomicFormula(expr)
+    else:
+        return out
