@@ -9,7 +9,7 @@ def parse_pn(tokens: list[str]) -> int:
             num = int(token)
         except ValueError:
             l, r = stck.pop(), stck.pop()
-            arithmetic_eval(l, r, token)
+            stck.append(arithmetic_eval(l, r, token))
         else:
             stck.append(num)
 
