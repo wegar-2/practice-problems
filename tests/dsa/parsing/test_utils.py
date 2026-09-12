@@ -36,11 +36,3 @@ def test_retrieve_atomic_formula1():
         retrieve_atomic_formula("A123&B_434)")
     with raises(InvalidAtomicFormula):
         retrieve_atomic_formula("A_0123&B_434)")
-
-
-# def test_retrieve_atomic_formula2():
-#     pass
-
-
-# def test_retrieve_atomic_formula3():
-#     pass

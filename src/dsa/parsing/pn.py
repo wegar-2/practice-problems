@@ -1,7 +1,7 @@
 from src.dsa.parsing.utils import arithmetic_eval
 
 
-def parse_pn(tokens: list[str]) -> int:
+def eval_pn(tokens: list[str]) -> int:
     stck: list[int] = []
 
     for token in reversed(tokens):
@@ -16,7 +16,7 @@ def parse_pn(tokens: list[str]) -> int:
     return stck[0]
 
 
-def parse_rpn(tokens: list[str]) -> int:
+def eval_rpn(tokens: list[str]) -> int:
     stck: list[int] = []
 
     for token in tokens:
