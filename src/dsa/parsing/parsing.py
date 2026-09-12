@@ -8,8 +8,6 @@ def parse_wff(
         expr: str,
         atomic_formulae: set[str]
 ):
-    # if any():
-
     pointer: int = 0
 
     if any(expr[pointer:].startswith(x) for x in atomic_formulae):

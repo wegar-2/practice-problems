@@ -7,7 +7,7 @@ def conjunction(l: str, r: str) -> str:
     return f"({l}&{r})"
 
 
-def binary_arithmetic_eval(l: int, r: int, operator: str) -> int:
+def arithmetic_eval(l: int, r: int, operator: str) -> int:
     match operator:
         case "+":
             return l + r
