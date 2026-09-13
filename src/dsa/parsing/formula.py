@@ -13,7 +13,7 @@ class AtomicFrml:
 class CompoundFrml:
     operator: str
     left: AtomicFrml | CompoundFrml
-    left: AtomicFrml | CompoundFrml
+    right: AtomicFrml | CompoundFrml
 
     def __post_init__(self):
         if self.operator not in BINARY_LOGICAL_OPERATORS:

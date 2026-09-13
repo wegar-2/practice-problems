@@ -97,7 +97,7 @@ def retrieve_atomic_formula(
         raise InvalidAtomicFormula(expr)
 
     idx: int = 2
-    while expr[idx].isnumeric() and idx < len(expr):
+    while idx < len(expr) and expr[idx].isnumeric():
         idx += 1
     validate_atomic_formula_index(expr[2:idx])
 
