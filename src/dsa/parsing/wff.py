@@ -19,20 +19,28 @@ class _WFFParser:
     def _end_reached(self) -> bool:
         return True if self._idx == len(self._expr) else False
 
-    def _parse_compound(self) -> CompoundFrml:
-        left: Frml = self._parse_compound()
+    def _parse(self) -> Frml:
+        if self._peek() != "(":
+            return self._parse_atomic()
+        self._consume()
+        if self._peek() == "~":
+            self._consume()
+            return CompoundFrml("~", self._parse(), None)
+        left: Frml = self._parse()
         operator: str = self._consume()
-        right: Frml = self._parse_compound()
+        right: Frml = self._parse()
         if self._consume() != ")":
             raise NotWellFormedFormula
         return CompoundFrml(operator, left, right)
 
     def _parse_atomic(self) -> AtomicFrml:
-        return AtomicFrml(retrieve_atomic_formula(self._expr[self._idx:]))
+        atomic: str = retrieve_atomic_formula(self._expr[self._idx:])
+        self._idx += len(atomic)
+        return AtomicFrml(atomic)
 
     def parse(self) -> Frml:
         if self._peek() == "(":
-            return self._parse_compound()
+            return self._parse()
         else:
             return self._parse_atomic()
 

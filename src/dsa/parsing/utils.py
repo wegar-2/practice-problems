@@ -5,6 +5,8 @@ from typing import Optional
 
 from src.dsa.parsing.constants import BINARY_LOGICAL_OPERATORS
 from src.dsa.parsing.exceptions import InvalidAtomicFormula
+from src.dsa.parsing.formula import AtomicFrml, CompoundFrml
+from src.dsa.parsing.aliases import Frml
 
 
 def arithmetic_eval(l: int, r: int, operator: str) -> int:
@@ -107,3 +109,26 @@ def retrieve_atomic_formula(
         raise InvalidAtomicFormula(expr)
     else:
         return out
+
+
+def logical_eval(frml: Frml, val: dict[AtomicFrml, bool]) -> bool:
+    if isinstance(frml, CompoundFrml):
+        match frml.operator:
+            case "&":
+                return (
+                        logical_eval(frml.left, val) and
+                        logical_eval(frml.right, val)
+                )
+            case "|":
+                return (
+                        logical_eval(frml.left, val) or
+                        logical_eval(frml.right, val)
+                )
+            case ">":
+                return (
+                        logical_eval(frml.left, val) and
+                        logical_eval(frml.right, val)
+                )
+        raise ValueError(f"Encountered unhandled logical operator: "
+                         f"{frml.operator}")
+    return val[frml]
