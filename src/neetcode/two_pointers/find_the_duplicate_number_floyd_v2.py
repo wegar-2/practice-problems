@@ -2,7 +2,10 @@ from typing import List
 
 
 class Solution:
-    """More succinct implementation"""
+    """
+    More succinct implementation of the solution using
+    Floyd's cycle detection algorithm.
+    """
     def findDuplicate(self, nums: List[int]) -> int:
         slow, fast = nums[0], nums[nums[0]]
         while (slow := nums[slow]) != (fast := nums[nums[fast]]):

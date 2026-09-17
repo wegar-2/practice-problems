@@ -2,8 +2,8 @@ from typing import List
 
 
 class Solution:
-    """First of the solution"""
-    
+    """First of the solution. Using Floyd's cycle detection algorithm. """
+
     def findDuplicate(self, nums: List[int]) -> int:
 
         if len(nums) == 2:
