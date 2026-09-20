@@ -1,4 +1,18 @@
+from typing import Literal, TypeAlias
 
+B: TypeAlias = Literal[0, 1]
+
+
+def make_bit_map(n: int) -> dict[int, B]:
+    """
+    Bits in the output are numbered left to right starting at 0
+    :param n:
+    :return:
+    """
+    out: dict[int, B] = {}
+    for sh in range(n.bit_length()):
+        out[sh] = 1 & (n >> sh) # noqa
+    return out
 
 def main():
 
@@ -22,14 +36,9 @@ def main():
     # bitwise XOR
     print(f"{(x ^ y)=:0{width}b}")
 
-
-def make_bit_map(n: int) -> dict[int, bool]:
-    """
-    Bits in the output are numbered left to right starting at 0
-    :param n:
-    :return:
-    """
-
+    m: int = 0b1010111
+    for k, v in make_bit_map(m).items():
+        print(f"{k}: {v}")
 
 
 if __name__ == "__main__":
